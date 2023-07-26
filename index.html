@@ -1,44 +1,48 @@
-<!DOCTYPE html> 
-<html> 
+
+<!DOCTYPE html>
+<html>
 <head>
-<style>
-.clock{ 
-font-size: 55px; 
-font-family: "Avenir"; Avenir;
-text-align: center;
-margin-top: 100px;
-} 
-</style>  
-</head> 
-<body> 
-<div class="clock"> 
-<span id="date"></span> 
-<br> 
-<span id="time"></span> 
-</div> 
-<script> 
-// Устанавливаем стартовую дату 
-var startDate = new Date("2023/07/07").getTime(); 
- 
-// Обновляем время каждые 250 миллисекунд 
-setInterval(function() { 
-var currentTime = new Date().getTime(); 
-var elapsedTime = currentTime - startDate; 
- 
-// Рассчитываем прошедшее время в 4 раза быстрее реального времени 
-var fastTime = startDate + (elapsedTime * 10); 
- 
-// Создаем новый объект даты с быстрым временем 
-var fastDate = new Date(fastTime); 
- 
-// Получаем отформатированные значения даты и времени 
-var formattedDate = fastDate.toLocaleDateString(); 
-var formattedTime = fastDate.toLocaleTimeString(); 
- 
-// Обновляем текст на странице 
-document.getElementById("date").innerHTML = formattedDate; 
-document.getElementById("time").innerHTML = formattedTime; 
- 
-}, 1); 
-</script> 
+    <title>Время | ЛМС</title>
+    <style>
+        .clock {
+            font-size: 55px;
+            font-family: "Avenir"; Avenir
+            text-align: left;
+            margin-top: 200px;
+            font-weight: bold
+      }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <span id="date"></span>
+        <br>
+        <span id="time"></span>
+    </div>
+    <script>
+        // Устанавливаем стартовую дату
+        var startDate = new Date("2023/07/07").getTime();
+        
+        // Обновляем время каждые 250 миллисекунд
+        setInterval(function() {
+            var currentTime = new Date().getTime();
+            var elapsedTime = currentTime - startDate;
+            
+            // Рассчитываем прошедшее время в 4 раза быстрее реального времени
+            var fastTime = startDate + (elapsedTime * 10);
+            
+            // Создаем новый объект даты с быстрым временем
+            var fastDate = new Date(fastTime);
+            
+            // Получаем отформатированные значения даты и времени
+            var formattedDate = fastDate.toLocaleDateString();
+            var formattedTime = fastDate.toLocaleTimeString();
+            
+            // Обновляем текст на странице
+            document.getElementById("date").innerHTML = formattedDate;
+            document.getElementById("time").innerHTML = formattedTime;
+            
+        }, 0,001);
+    </script>
 </body>
+</html>
