@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Часы Мемных Стран</title>
+    <style>
+        .clock {
+            font-size: 55px;
+            font-family: Courier New;
+            text-align: left;
+            font-weight: bold
+         }
+      .h1{
+            font-size: 55px;
+            font-family: Courier New;
+            text-align: left;
+            font-weight: normal
+              
+         }
+    </style>
+</head>
+<body>
+  <h1>
+   
+  </h1>
+    <div class="clock">
+        <span id="date"></span>
+        <br>
+        <span id="time"></span>
+    </div>
+    <script>
+        // Устанавливаем стартовую дату
+        var startDate = new Date("2023/07/07").getTime();
+        
+        // Обновляем время каждые 250 миллисекунд
+        setInterval(function() {
+            var currentTime = new Date().getTime();
+            var elapsedTime = currentTime - startDate;
+            
+            // Рассчитываем прошедшее время в 4 раза быстрее реального времени
+            var fastTime = startDate + (elapsedTime * 10);
+            
+            // Создаем новый объект даты с быстрым временем
+            var fastDate = new Date(fastTime);
+            
+            // Получаем отформатированные значения даты и времени
+            var formattedDate = fastDate.toLocaleDateString();
+            var formattedTime = fastDate.toLocaleTimeString();
+            
+            // Обновляем текст на странице
+            document.getElementById("date").innerHTML = formattedDate;
+            document.getElementById("time").innerHTML = formattedTime;
+            
+        }, 0,001);
+    </script>
+</body>
+</html>
